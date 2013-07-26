@@ -1,5 +1,7 @@
 #include <iostream>
 #include <manchester/encoder.hpp>
+#include <manchester/decoder.hpp>
+#include <manchester/timer.h>
 #include <bitset>
 #include <vector>
 
@@ -24,6 +26,20 @@ int main()
         cout << bit;
 
     cout << endl;
+
+    Decoder decoder;
+    int previos_bit = 1;
+
+    for (const int &bit: output_data) {
+        timer_tick();
+
+        if (previos_bit != bit)
+            decoder.on_edge_detecting();
+
+        previos_bit = bit;
+    }
+
+    cout << bitset<16>(decoder.output()) << endl;
 
     return 0;
 }
