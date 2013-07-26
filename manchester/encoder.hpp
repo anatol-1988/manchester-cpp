@@ -14,6 +14,8 @@ public:
 private:
     enum State {STOP, SENDING, TRANSITION};
 
+    const static int BITS_IN_PACK = 16;
+
     State _state;
     bool _output;
     uint16_t _data;

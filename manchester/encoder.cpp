@@ -1,11 +1,10 @@
 #include <encoder.hpp>
-#include <iostream>
 
 using namespace diff_manchester;
 
 Encoder::Encoder()
 {
-    _bit_pos = 15;
+    _bit_pos = BITS_IN_PACK - 1;
     _data = 0x0;
     _state = STOP;
     _output = 1;
@@ -25,7 +24,7 @@ void Encoder::set_data(uint16_t data)
 void Encoder::tick()
 {
     switch (_state) {
-        case STOP: _output = true; _bit_pos = 15; break;
+        case STOP:  _output = true; _bit_pos = BITS_IN_PACK - 1; break;
         
         case SENDING: {
             const bool m_s_bit = (_data >> _bit_pos) & 0x1;
@@ -33,7 +32,6 @@ void Encoder::tick()
             if (m_s_bit == 0)
                 _output = !_output;
 
-            _bit_pos -= 1;
             _state = TRANSITION;
             break;
         }
@@ -41,6 +39,7 @@ void Encoder::tick()
         case TRANSITION: {
             _output = !_output;
             _state = _bit_pos > 0 ? SENDING : STOP;
+            _bit_pos--;
             break;
         }
     }
