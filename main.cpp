@@ -28,6 +28,8 @@ int main()
             output_data.push_back(encoder.output());
         }
 
+        encoder.tick();
+
         int previos_bit = 1;
 
         for (const int &bit: output_data) {
@@ -40,9 +42,8 @@ int main()
         }
 
         if (input != decoder.output())
-            cout << std::hex << input << " Fail " << std::hex << decoder.output() << endl;
-        else
-            cout << "Success" << endl;
+            cout << std::hex << input << " " << output_data[0] <<
+                  output_data[1] << " " << std::hex << decoder.output() << endl;
 
         decoder.clear();
     }

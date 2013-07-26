@@ -4,8 +4,6 @@ using namespace diff_manchester;
 
 Encoder::Encoder()
 {
-    _bit_pos = BITS_IN_PACK - 1;
-    _data = 0x0;
     _state = STOP;
     _output = 1;
 }
@@ -18,6 +16,7 @@ bool Encoder::output() const
 void Encoder::set_data(uint16_t data)
 {
     _data = data;
+    _bit_pos = BITS_IN_PACK - 1;
     _state = SENDING;
 }
     
@@ -44,7 +43,6 @@ void Encoder::tick()
                 _bit_pos--;
             } else {
                 _state = STOP;
-                _bit_pos = BITS_IN_PACK - 1;
             }
 
             break;
