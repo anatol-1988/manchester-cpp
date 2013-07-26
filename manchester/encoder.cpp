@@ -24,7 +24,7 @@ void Encoder::set_data(uint16_t data)
 void Encoder::tick()
 {
     switch (_state) {
-        case STOP:  _output = true; _bit_pos = BITS_IN_PACK - 1; break;
+        case STOP: _output = 1; break;
         
         case SENDING: {
             const bool m_s_bit = (_data >> _bit_pos) & 0x1;
@@ -38,8 +38,15 @@ void Encoder::tick()
 
         case TRANSITION: {
             _output = !_output;
-            _state = _bit_pos > 0 ? SENDING : STOP;
-            _bit_pos--;
+
+            if (_bit_pos > 0) {
+                _state = SENDING;
+                _bit_pos--;
+            } else {
+                _state = STOP;
+                _bit_pos = BITS_IN_PACK - 1;
+            }
+
             break;
         }
     }
