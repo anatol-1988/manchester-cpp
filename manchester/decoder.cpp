@@ -9,7 +9,7 @@ Decoder::Decoder()
     _received = 0;
 }
     
-uint32_t Decoder::output() const
+uint16_t Decoder::output() const
 {
     return _output;
 }
@@ -48,3 +48,9 @@ void Decoder::on_edge_detecting()
     _reset_counter();
 }
 
+void Decoder::clear()
+{
+    _output = 0x0;
+    _received = 0;
+    _syncronized = false;
+}

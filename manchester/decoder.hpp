@@ -7,9 +7,10 @@ class Decoder
 {
 public:
     Decoder();
-    uint32_t output() const;
+    uint16_t output() const;
     void shift_output();
     void on_edge_detecting();
+    void clear();
 
 private:
     void _reset_counter();
