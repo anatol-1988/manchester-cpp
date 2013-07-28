@@ -18,12 +18,12 @@ int main()
     Encoder encoder;
     Decoder decoder;
 
-    for (int i = 0; i < 10000; ++i) {
+    for (int i = 0; i < 10; ++i) {
         const uint16_t input = rand() % numeric_limits<uint16_t>::max();
         encoder.set_data(input);
         vector<int> output_data;
 
-        for (int i = 0; i < 16*2; ++i) {
+        for (int i = 0; i < numeric_limits<uint16_t>::digits*2 + 2; ++i) {
             encoder.tick();
             output_data.push_back(encoder.output());
         }
@@ -45,8 +45,11 @@ int main()
             cout << std::hex << input << " " << output_data[0] <<
                   output_data[1] << " " << std::hex << decoder.output() << endl;
 
-        decoder.clear();
+        for (int i = 0; i < numeric_limits<uint16_t>::digits; ++i)
+            decoder.shift_output();
     }
+
+    cout << "Success" << endl;
 
     return 0;
 }

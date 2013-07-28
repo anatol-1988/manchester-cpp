@@ -12,7 +12,7 @@ public:
     void tick();
 
 private:
-    enum State {STOP, SENDING, TRANSITION};
+    enum State {STOP, SENDING, SYNC};
 
     const static int BITS_IN_PACK = 16;
 

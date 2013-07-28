@@ -34,7 +34,9 @@ void Decoder::_append(uint32_t bit)
 
 void Decoder::on_edge_detecting()
 {
-    if (_counter() >= CLOCK_PERIOD) {
+    if (_counter() >= 2*CLOCK_PERIOD) {
+
+    } else  if (_counter() >= CLOCK_PERIOD) {
         _append(1);
     } else {
         if (_syncronized == false) {
@@ -48,9 +50,3 @@ void Decoder::on_edge_detecting()
     _reset_counter();
 }
 
-void Decoder::clear()
-{
-    _output = 0x0;
-    _received = 0;
-    _syncronized = false;
-}
