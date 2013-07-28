@@ -32,6 +32,9 @@ int main()
 
         int previos_bit = 1;
 
+        for (int i = 0; i < 10; ++i)
+            timer_tick();
+
         for (const int &bit: output_data) {
             timer_tick();
 

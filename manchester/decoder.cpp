@@ -1,4 +1,5 @@
 #include <decoder.hpp>
+#include <iostream>
 
 using namespace diff_manchester;
 
