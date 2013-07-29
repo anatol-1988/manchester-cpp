@@ -44,9 +44,13 @@ int main()
             previos_bit = bit;
         }
 
-        if (input != decoder.output())
-            cout << std::hex << input << " " << output_data[0] <<
-                  output_data[1] << " " << std::hex << decoder.output() << endl;
+        cout << std::hex << input << " " << endl;
+
+        for (const int &bit: output_data)
+            cout << bit;
+
+        cout << endl;
+        cout << std::hex << decoder.output() << endl;
 
         for (int i = 0; i < numeric_limits<uint16_t>::digits; ++i)
             decoder.shift_output();

@@ -1,5 +1,4 @@
 #include <decoder.hpp>
-#include <iostream>
 
 using namespace diff_manchester;
 
@@ -36,8 +35,9 @@ void Decoder::_append(uint32_t bit)
 void Decoder::on_edge_detecting()
 {
     if (_counter() >= 2*CLOCK_PERIOD) {
-
+        _syncronized = true;
     } else  if (_counter() >= CLOCK_PERIOD) {
+        _syncronized = true;
         _append(1);
     } else {
         if (_syncronized == false) {
