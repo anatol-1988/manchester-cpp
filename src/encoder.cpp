@@ -49,8 +49,8 @@ void Encoder::tick()
 
                 _state = SYNC;
             } else {
-                _output = 1;
-                _state = STOP;
+                _bit_pos = BITS_IN_PACK;
+                _state = SYNC;
             }
 
             break;

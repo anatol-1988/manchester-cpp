@@ -18,12 +18,13 @@ int main()
     Encoder encoder;
     Decoder decoder;
 
+    const uint16_t input = rand() % numeric_limits<uint16_t>::max();
+    encoder.set_data(input);
+
     for (int i = 0; i < 10; ++i) {
-        const uint16_t input = rand() % numeric_limits<uint16_t>::max();
-        encoder.set_data(input);
         vector<int> output_data;
 
-        for (int i = 0; i < numeric_limits<uint16_t>::digits*2 + 2; ++i) {
+        for (int i = 0; i < numeric_limits<uint16_t>::digits*2 + 1; ++i) {
             encoder.tick();
             output_data.push_back(encoder.output());
         }
