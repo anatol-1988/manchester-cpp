@@ -35,19 +35,17 @@ bool Encoder::tick()
         }
         
         case SENDING: {
-            if (_bit_pos > 0) {
-                _bit_pos--;
-                const bool m_s_bit = (_data >> _bit_pos) & 0x1;
+            _bit_pos--;
+            const bool m_s_bit = (_data >> _bit_pos) & 0x1;
 
-                if (m_s_bit == 0)
-                    _output = !_output;
-
-                _state = SYNC;
-            } else {
+            if (m_s_bit == 0)
+                _output = !_output;
+            
+            if (_bit_pos == 0)
                 _bit_pos = BITS_IN_PACK;
-                _state = SYNC;
-            }
-
+            
+            _state = SYNC;
+            
             break;
         }
 
