@@ -3,12 +3,16 @@
 namespace diff_manchester
 {
 
+/// Класс декодировщика
 class Decoder
 {
 public:
     Decoder();
+    /// Принятое значение
     uint16_t output() const;
+    /// Сдвинуть принятое значение
     void shift_output();
+    /// Вызывается при обнаружении фронта
     void on_edge_detecting();
 
 private:

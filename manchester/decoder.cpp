@@ -8,7 +8,10 @@ Decoder::Decoder()
     _syncronized = false;
     _received = 0;
 }
-    
+
+/**
+ * @return Полученное значение
+ */
 uint16_t Decoder::output() const
 {
     return _output;

@@ -8,11 +8,17 @@ Encoder::Encoder()
     _output = 1;
 }
     
+/**
+ * @return Дискретное значение выхода
+ */
 bool Encoder::output() const
 {
     return _output;
 }
     
+/**
+ * @param data Значение для передачи
+ */
 void Encoder::set_data(uint16_t data)
 {
     _data = data;
