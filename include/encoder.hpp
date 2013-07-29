@@ -8,12 +8,10 @@ class Encoder
 {
 public:
     Encoder();
-    /// Дискретный выход
-    bool output() const;
     /// Задать данные для кодирования
     void set_data(uint16_t data);
     /// Получить значение очередного дискрета
-    void tick();
+    bool tick();
 
 private:
     enum State {STOP, SENDING, SYNC};

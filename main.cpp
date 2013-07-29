@@ -24,12 +24,9 @@ int main()
     for (int i = 0; i < 10; ++i) {
         vector<int> output_data;
 
-        for (int i = 0; i < numeric_limits<uint16_t>::digits*2 + 1; ++i) {
-            encoder.tick();
-            output_data.push_back(encoder.output());
+        for (int i = 0; i < numeric_limits<uint16_t>::digits*2 + 2; ++i) {
+            output_data.push_back(encoder.tick());
         }
-
-        encoder.tick();
 
         int previos_bit = 1;
 

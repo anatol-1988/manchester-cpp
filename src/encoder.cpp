@@ -7,15 +7,7 @@ Encoder::Encoder()
     _state = STOP;
     _output = 1;
 }
-    
-/**
- * @return Дискретное значение выхода
- */
-bool Encoder::output() const
-{
-    return _output;
-}
-    
+
 /**
  * @param data Значение для передачи
  */
@@ -24,8 +16,11 @@ void Encoder::set_data(uint16_t data)
     _data = data;
     _bit_pos = BITS_IN_PACK;
 }
-    
-void Encoder::tick()
+
+/**
+ * @return bool Дискретное значение выхода
+ */
+bool Encoder::tick()
 {
     switch (_state) {
         case STOP: {
@@ -62,5 +57,7 @@ void Encoder::tick()
             break;
         }
     }
+
+    return _output;
 }
     
