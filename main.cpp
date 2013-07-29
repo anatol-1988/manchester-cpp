@@ -1,7 +1,7 @@
 #include <iostream>
-#include <manchester/encoder.hpp>
-#include <manchester/decoder.hpp>
-#include <manchester/timer.h>
+#include <encoder.hpp>
+#include <decoder.hpp>
+#include <timer.h>
 #include <bitset>
 #include <vector>
 #include <cstdlib>
