@@ -13,7 +13,7 @@ public:
     /// Сдвинуть принятое значение
     void shift_output();
     /// Вызывается при обнаружении фронта
-    void on_edge_detecting();
+    void on_edge_detecting(uint16_t edge_time);
 
 private:
     void _reset_counter();
@@ -21,7 +21,7 @@ private:
 
     void _append(uint32_t bit);
 
-    static const int CLOCK_PERIOD;
+    static const int THRESHOLD;
     uint32_t _output;
     bool _syncronized;
     uint32_t _received;

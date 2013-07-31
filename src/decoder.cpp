@@ -35,11 +35,14 @@ void Decoder::_append(uint32_t bit)
     _received++;
 }
 
-void Decoder::on_edge_detecting()
+/**
+ * @param edge_time Период между двумя фронтами
+ */
+void Decoder::on_edge_detecting(uint16_t edge_time)
 {
-    if (_counter() >= 2*CLOCK_PERIOD) {
+    if (edge_time >= 2*THRESHOLD) {
         _syncronized = true;
-    } else  if (_counter() >= CLOCK_PERIOD) {
+    } else  if (edge_time >= THRESHOLD) {
         _syncronized = true;
         _append(1);
     } else {
@@ -50,7 +53,5 @@ void Decoder::on_edge_detecting()
             _syncronized = false;
         }
     }
-
-    _reset_counter();
 }
 
