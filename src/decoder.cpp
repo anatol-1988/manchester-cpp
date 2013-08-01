@@ -34,7 +34,10 @@ void Decoder::_append(uint32_t bit)
     else
         _output &= ~0x1;
 
-    _received++;
+    if (_received < 32)
+        _received++;
+    else
+        _received = 32;
 }
 
 /**
