@@ -12,9 +12,11 @@ Decoder::Decoder()
 /**
  * @return Полученное значение
  */
-uint16_t Decoder::output() const
+uint16_t Decoder::output()
 {
-    return _output;
+    const uint16_t out = _output >> (_received - 16);
+    _received--;
+    return out;
 }
 
 void Decoder::shift_output()

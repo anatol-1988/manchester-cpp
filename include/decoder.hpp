@@ -9,7 +9,8 @@ class Decoder
 public:
     Decoder();
     /// Принятое значение
-    uint16_t output() const;
+    uint16_t output();
+    uint32_t received() const;
     /// Сдвинуть принятое значение
     void shift_output();
     /// Вызывается при обнаружении фронта
