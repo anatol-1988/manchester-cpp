@@ -41,6 +41,14 @@ void Decoder::_append(uint32_t bit)
 }
 
 /**
+ * @return Количество принятых битов
+ */
+uint32_t Decoder::received() const
+{
+    return _received;
+}
+
+/**
  * @param edge_time Период между двумя фронтами
  */
 void Decoder::on_edge_detecting(uint16_t edge_time)
