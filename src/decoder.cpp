@@ -19,6 +19,11 @@ uint16_t Decoder::output()
     return out;
 }
 
+void Decoder::clear()
+{
+    _received = 0;
+}
+
 void Decoder::shift_output()
 {
     _output <<= 1;
@@ -53,9 +58,9 @@ uint32_t Decoder::received() const
  */
 void Decoder::on_edge_detecting(uint16_t edge_time)
 {
-    if (edge_time >= 2*THRESHOLD) {
+    if (edge_time > 2*THRESHOLD) {
         _syncronized = true;
-    } else  if (edge_time >= THRESHOLD) {
+    } else if (edge_time > THRESHOLD) {
         _syncronized = true;
         _append(1);
     } else {
