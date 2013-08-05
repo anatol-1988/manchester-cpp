@@ -1,22 +1,19 @@
 #include <decoder.hpp>
+#include <timer.h>
 
-using namespace diff_manchester;
-
-int counter = 0;
+int _counter = 0;
 
 void timer_tick()
 {
-    counter++;
+    _counter++;
 }
 
-const int Decoder::CLOCK_PERIOD = 2;
-
-void Decoder::_reset_counter()
+void reset_counter()
 {
-    counter = 0;
+    _counter = 0;
 }
 
-int Decoder::_counter() const
+int counter()
 {
-    return counter;
+    return _counter;
 }

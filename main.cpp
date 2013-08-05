@@ -7,9 +7,12 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
+#include <timer.h>
 
 using namespace std;
 using namespace diff_manchester;
+
+const int Decoder::THRESHOLD = 2;
 
 int main()
 {
