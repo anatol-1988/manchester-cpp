@@ -40,7 +40,7 @@ int main()
             timer_tick();
 
             if (previos_bit != bit)
-                decoder.on_edge_detecting();
+                decoder.on_edge_detecting(counter());
 
             previos_bit = bit;
         }
