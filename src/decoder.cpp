@@ -1,8 +1,12 @@
 #include <decoder.hpp>
+#include <iostream>
 
 using namespace diff_manchester;
 
-Decoder::Decoder()
+/**
+ * @param threshold Пороговое значение
+ */
+Decoder::Decoder(int threshold) : _threshold(threshold)
 {
     _output = 0x0;
     _syncronized = false;
@@ -14,15 +18,18 @@ Decoder::Decoder()
  */
 uint16_t Decoder::output()
 {
-    const uint16_t out = _output >> (_received - 16);
-    _received--;
-    return out;
+    if (_received >= 16) {
+        const uint16_t out = _output >> (_received - 16);
+        _received--;
+        return out;
+    } else {
+        return 0x0000;
+    }
 }
 
-void Decoder::shift_output()
+void Decoder::clear()
 {
-    _output <<= 1;
-    _received--;
+    _received = 0;
 }
 
 void Decoder::_append(uint32_t bit)
@@ -53,9 +60,9 @@ uint32_t Decoder::received() const
  */
 void Decoder::on_edge_detecting(uint16_t edge_time)
 {
-    if (edge_time >= 2*THRESHOLD) {
+    if (edge_time > 2*_threshold) {
         _syncronized = true;
-    } else  if (edge_time >= THRESHOLD) {
+    } else if (edge_time > _threshold) {
         _syncronized = true;
         _append(1);
     } else {
