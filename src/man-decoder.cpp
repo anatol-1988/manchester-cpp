@@ -1,5 +1,4 @@
 #include <man-decoder.hpp>
-#include <iostream>
 
 using namespace manchester;
 
@@ -34,7 +33,6 @@ void Decoder::clear()
 
 void Decoder::_append(uint32_t bit)
 {
-    std::cout << "append: " << bit << std::endl;
     _output <<= 1;
 
     if (bit == 1)
