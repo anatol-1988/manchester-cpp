@@ -9,6 +9,7 @@ ADD_DEFINITIONS(
 )
 
 SET(DIF_LIBS dif-decoder-lib dif-encoder-lib)
+SET(MAN_LIBS man-encoder-lib)
 INCLUDE_DIRECTORIES("../include")
 
 SET(ENCODER_TEST_SRC test-dif-encoder.cpp)
@@ -22,3 +23,10 @@ ADD_EXECUTABLE(test-dif-decoder ${DECODER_TEST_SRC})
 QT5_USE_MODULES(test-dif-decoder Test)
 TARGET_LINK_LIBRARIES(test-dif-decoder ${DIF_LIBS})
 ADD_TEST(NAME test-dif-decoder COMMAND test-dif-decoder)
+
+
+SET(MAN_ENCODER_TEST_SRC test-man-encoder.cpp)
+ADD_EXECUTABLE(test-man-encoder ${MAN_ENCODER_TEST_SRC})
+QT5_USE_MODULES(test-man-encoder Test)
+TARGET_LINK_LIBRARIES(test-man-encoder ${MAN_LIBS})
+ADD_TEST(NAME test-man-encoder COMMAND test-man-encoder)
