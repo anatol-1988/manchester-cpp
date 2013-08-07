@@ -1,4 +1,4 @@
-#include <encoder.hpp>
+#include <dif-encoder.hpp>
 
 using namespace diff_manchester;
 

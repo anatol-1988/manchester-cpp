@@ -1,4 +1,4 @@
-#include <decoder.hpp>
+#include <dif-decoder.hpp>
 
 using namespace diff_manchester;
 

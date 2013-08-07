@@ -8,17 +8,17 @@ ADD_DEFINITIONS(
     -std=c++11
 )
 
-SET(MAN_LIBS man-decoder-lib man-encoder-lib)
+SET(DIF_LIBS dif-decoder-lib dif-encoder-lib)
 INCLUDE_DIRECTORIES("../include")
 
-SET(ENCODER_TEST_SRC test-encoder.cpp)
-ADD_EXECUTABLE(test-encoder ${ENCODER_TEST_SRC})
-QT5_USE_MODULES(test-encoder Test)
-TARGET_LINK_LIBRARIES(test-encoder ${MAN_LIBS})
-ADD_TEST(NAME test-encoder COMMAND test-encoder)
+SET(ENCODER_TEST_SRC test-dif-encoder.cpp)
+ADD_EXECUTABLE(test-dif-encoder ${ENCODER_TEST_SRC})
+QT5_USE_MODULES(test-dif-encoder Test)
+TARGET_LINK_LIBRARIES(test-dif-encoder ${DIF_LIBS})
+ADD_TEST(NAME test-dif-encoder COMMAND test-dif-encoder)
 
-SET(DECODER_TEST_SRC test-decoder.cpp)
-ADD_EXECUTABLE(test-decoder ${DECODER_TEST_SRC})
-QT5_USE_MODULES(test-decoder Test)
-TARGET_LINK_LIBRARIES(test-decoder ${MAN_LIBS})
-ADD_TEST(NAME test-decoder COMMAND test-decoder)
+SET(DECODER_TEST_SRC test-dif-decoder.cpp)
+ADD_EXECUTABLE(test-dif-decoder ${DECODER_TEST_SRC})
+QT5_USE_MODULES(test-dif-decoder Test)
+TARGET_LINK_LIBRARIES(test-dif-decoder ${DIF_LIBS})
+ADD_TEST(NAME test-dif-decoder COMMAND test-dif-decoder)

@@ -1,11 +1,11 @@
-#include <encoder.hpp>
+#include <dif-encoder.hpp>
 #include <cstdlib>
-#include <test-encoder.h>
+#include <test-dif-encoder.h>
 
 using namespace std;
 using namespace diff_manchester;
 
-void TestEncoder::tick()
+void TestDifEncoder::tick()
 {
     const uint16_t input_data = 0xF0F0;
     Encoder encoder;
@@ -45,5 +45,5 @@ void TestEncoder::tick()
     QCOMPARE(encoder.tick(), false);    // 0
 }
 
-QTEST_MAIN(TestEncoder)
-#include "test-encoder.moc"
+QTEST_MAIN(TestDifEncoder)
+#include "test-dif-encoder.moc"

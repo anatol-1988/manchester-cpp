@@ -1,5 +1,5 @@
-#include "test-decoder.h"
-#include <decoder.hpp>
+#include "test-dif-decoder.h"
+#include <dif-decoder.hpp>
 #include <vector>
 #include <QDebug>
 
@@ -13,7 +13,7 @@ const vector<uint16_t> INPUT_VECTOR = { 1,
                                         2, 2, 2, 2,
                                         1, 1, 1, 1, 1, 1, 1, 1};
 
-void TestDecoder::output()
+void TestDifDecoder::output()
 {
 
     Decoder decoder(THRESHOLD);
@@ -26,7 +26,7 @@ void TestDecoder::output()
     QCOMPARE(decoder.output(), static_cast<uint16_t>(0xF0F0));
 }
 
-void TestDecoder::received()
+void TestDifDecoder::received()
 {
     Decoder decoder(THRESHOLD);
     QCOMPARE(decoder.received(), static_cast<uint32_t>(0));
@@ -37,5 +37,5 @@ void TestDecoder::received()
     QCOMPARE(decoder.received(), static_cast<uint32_t>(16));
 }
 
-QTEST_MAIN(TestDecoder)
-#include "test-decoder.moc"
+QTEST_MAIN(TestDifDecoder)
+#include "test-dif-decoder.moc"
